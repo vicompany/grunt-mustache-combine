@@ -46,9 +46,9 @@ grunt.initConfig({
 #### options.format
 Type: `String`
 Default value: `'es6'`
-Other: `'commonjs', 'amd', false`
+Other values: `'commonjs', 'amd', es5`
 
-Which format to output
+The format to output.
 
 #### options.extension
 Type: `String`
@@ -68,7 +68,7 @@ grunt.initConfig({
     files: {
       'dest/templates.js': ['templates/**/*.mustache],
     },
-  },
+  }
 })
 ```
 
