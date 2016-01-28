@@ -66,7 +66,7 @@ grunt.initConfig({
   mustache_combine: {
     options: {},
     files: {
-      'dest/templates.js': ['templates/**/*.mustache],
+      'dest/templates.js': ['templates/**/*.mustache'],
     },
   }
 })
