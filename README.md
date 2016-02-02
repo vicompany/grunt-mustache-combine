@@ -2,6 +2,21 @@
 
 > Combine Mustache templates into one file.
 
+## Getting Started
+
+This plugin will combine all your Mustache templates into one file and use the path of the file as input for the key. It won't pre-parse the file, because Mustache will [do that on the first render](https://github.com/janl/mustache.js#pre-parsing-and-caching-templates).
+
+```js
+// Contents of your generated template.js
+export default {"my/template": "hello {{name}}"};
+
+// In your module.js
+import Mustache from 'mustache';
+import templates from './templates';
+
+Mustache.render(templates['my/template'], { name: 'World'});
+```
+
 ## Install
 
 ```
