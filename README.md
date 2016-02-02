@@ -14,7 +14,7 @@ $ npm install --save-dev grunt-mustache-combine
 require('load-grunt-tasks')(grunt); // npm install --save-dev load-grunt-tasks
 
 grunt.initConfig({
-	mustache_combine: {
+  mustache_combine: {
     all: {
       files: 'js/templates.js': ['templates/**/*.mustache']
     }
@@ -30,14 +30,14 @@ grunt.registerTask('default', ['mustache_combine']);
 
 ```js
 grunt.initConfig({
-	mustache_combine: {
+  mustache_combine: {
     options: {
       format: 'amd',
       extension: '.html',
       removeFromKey: 'path/to/'
     },
     all: {
-      files: 'js/template-compiled.js': ['path/to/templates/**/*.html']
+      files: 'dist/templates.js': ['path/to/templates/**/*.html']
     }
   }
 });
@@ -46,32 +46,32 @@ grunt.initConfig({
 ## Options
 
 ### options.format
-Type: `String`
-Default: `'es6'`
+Type: `String`  
+Default: `'es6'`  
 Possible values: `'commonjs', 'amd', es5`
 
 The format to output.
 
 ### options.extension
-Type: `String`
+Type: `String`  
 Default: `'.mustache'`
 
 The extension to remove from the key.
 
 ### options.removeFromKey
-Type: `String`
+Type: `String`  
 Default: `''`
 
 Paart of the path to remove from the key.
 
 ### options.useLowerCaseKey
-Type: `Boolean`
+Type: `Boolean`  
 Default: `true`
 
 Generate lower case keys. Set to `false` to ignore casing.
 
 ### options.formatKey
-Type: `Function`
+Type: `Function`  
 Default: `null`
 
 Function to generate a custom key. It receives the file path as a parameter and overrules the `removeFromKey` and `useLowerCaseKey` options.
