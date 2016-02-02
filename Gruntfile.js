@@ -34,22 +34,45 @@ module.exports = function (grunt) {
 
     // Configuration to be run (and then tested).
     mustache_combine: {
-      default_options: {
-        options: {
-        },
+      defaults: {
+        options: {},
         files: {
-          'tmp/default_options': ['test/fixtures/testing', 'test/fixtures/123']
+          'tmp/defaults': ['test/fixtures/hello.mustache', 'test/fixtures/nested/foo.mustache', 'test/fixtures/nested/PascalCase.mustache']
         }
       },
-      custom_options: {
+      es5: {
         options: {
-          separator: ': ',
-          punctuation: ' !!!'
+          format: 'ES5'
         },
         files: {
-          'tmp/custom_options': ['test/fixtures/testing', 'test/fixtures/123']
+          'tmp/es5': ['test/fixtures/hello.mustache']
         }
-      }
+      },
+      amd: {
+        options: {
+          format: 'AMD'
+        },
+        files: {
+          'tmp/amd': ['test/fixtures/hello.mustache']
+        }
+      },
+      commonjs: {
+        options: {
+          format: 'commonjs'
+        },
+        files: {
+          'tmp/commonjs': ['test/fixtures/hello.mustache']
+        }
+      },
+      // custom: {
+      //   options: {
+      //     separator: ': ',
+      //     punctuation: ' !!!'
+      //   },
+      //   files: {
+      //     'tmp/custom': ['test/fixtures/hello.mustache', 'test/fixtures/nested/foo.mustache', 'test/fixtures/nested/PascalCase.mustache']
+      //   }
+      // }
     },
 
     // Unit tests.

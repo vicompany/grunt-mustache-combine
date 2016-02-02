@@ -12,8 +12,11 @@ module.exports = function (grunt) {
   grunt.registerMultiTask('mustache_combine', 'Combine Mustache templates', function () {
     // Merge task-specific and/or target-specific options with these defaults.
     var options = this.options({
-      format: 'ES6',
-      extension: '.mustache'
+      format: 'es6',
+      extension: '.mustache',
+      removeFromKey: '',
+      formatKey: null,
+      useLowerCaseKey: true
     });
 
     // Iterate over all specified file groups.
@@ -28,10 +31,17 @@ module.exports = function (grunt) {
         })
         .reduce(function (data, filepath) {
           var source = grunt.file.read(filepath);
-          var name = filepath
-            .replace('./Views/', '')
-            .replace(options.extension, '')
-            .toLowerCase();
+          var name = filepath.replace(options.extension, '');
+
+          if (typeof options.formatKey === 'function') {
+            name = options.formatKey(name);
+          } else if (options.removeFromKey) {
+            name = name.replace(options.removeFromKey, '');
+          }
+
+          if (options.useLowerCaseKey === true) {
+            name = name.toLowerCase();
+          }
 
           data[name] = source;
 
@@ -40,9 +50,9 @@ module.exports = function (grunt) {
 
       // Create output format
       switch (options.format.toLowerCase()) {
-        case 'es6':
-        case 'es2015':
-          src = ['export default ', JSON.stringify(src), ';'];
+        case 'es5':
+        case 'iife':
+          src = ['(function() { return ', JSON.stringify(src), '; })();'];
           break;
         case 'commonjs':
           src = ['module.exports = ', JSON.stringify(src), ';'];
@@ -50,10 +60,8 @@ module.exports = function (grunt) {
         case 'amd':
           src = ['define(', JSON.stringify(src), ');'];
           break;
-        case 'es5':
-        case 'iife':
         default:
-          src = ['(function(){ return ', JSON.stringify(src), '; })();'];
+          src = ['export default ', JSON.stringify(src), ';'];
       }
 
       src = src.join('');
