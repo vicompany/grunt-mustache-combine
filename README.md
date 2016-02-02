@@ -21,7 +21,7 @@ grunt.initConfig({
   }
 });
 
-grunt.registerTask('default', ['mustach_combine']);
+grunt.registerTask('default', ['mustache_combine']);
 ```
 
 ## Examples
@@ -35,11 +35,9 @@ grunt.initConfig({
       format: 'amd',
       extension: '.html',
       removeFromKey: 'path/to/'
-      // useLowerCaseKey: true,
-      // formatKey: null
     },
     all: {
-      files: 'js/templates.js': ['path/to/templates/**/*.mustache']
+      files: 'js/template-compiled.js': ['path/to/templates/**/*.html']
     }
   }
 });
@@ -50,7 +48,7 @@ grunt.initConfig({
 ### options.format
 Type: `String`
 Default: `'es6'`
-Other values: `'commonjs', 'amd', es5`
+Possible values: `'commonjs', 'amd', es5`
 
 The format to output.
 
@@ -58,14 +56,42 @@ The format to output.
 Type: `String`
 Default: `'.mustache'`
 
-The extension to remove.
+The extension to remove from the key.
 
-## Usage Examples
+### options.removeFromKey
+Type: `String`
+Default: `''`
 
-#### Default Options
-In this example, the default options are used to combine the templates.
+Paart of the path to remove from the key.
 
+### options.useLowerCaseKey
+Type: `Boolean`
+Default: `true`
 
+Generate lower case keys. Set to `false` to ignore casing.
+
+### options.formatKey
+Type: `Function`
+Default: `null`
+
+Function to generate a custom key. It receives the file path as a parameter and overrules the `removeFromKey` and `useLowerCaseKey` options.
+
+```js
+grunt.initConfig({
+	mustache_combine: {
+    options: {
+      formatKey: function(filepath) {
+        return filepath
+          .replace('templates/sub/', 'tpl-')
+          .toUpperCase();
+      }
+    },
+    all: {
+      files: 'js/template.js': ['path/to/templates/**/*.mustache']
+    }
+  }
+});
+```
 
 ## License
 
