@@ -8,7 +8,7 @@ This plugin will combine all your Mustache templates into one file and use the p
 
 ```js
 // Contents of your generated template.js
-export default {"my/template": "hello {{name}}"};
+export default {"my/template": "<h1>hello {{name}}</h1>"};
 
 // In your module.js
 import Mustache from 'mustache';
