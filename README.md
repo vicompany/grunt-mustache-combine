@@ -95,4 +95,4 @@ grunt.initConfig({
 
 ## License
 
-MIT © VI Company](http://vicompany.nl)
+MIT © [VI Company](http://vicompany.nl)
