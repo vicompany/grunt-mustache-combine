@@ -1,0 +1,1 @@
+export default {"test/fixtures/hello":"<div>hello {{name}}</div>","test/fixtures/nested/foo":"<div>{{foo}}</div>","test/fixtures/nested/pascalcase":"<div>{{PascalCase}}</div>"};

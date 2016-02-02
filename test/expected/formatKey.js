@@ -1,0 +1,1 @@
+export default {"_PREFIX/FOO":"<div>{{foo}}</div>","_PREFIX/PASCALCASE":"<div>{{PascalCase}}</div>"};

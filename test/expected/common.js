@@ -1,0 +1,1 @@
+module.exports = {"test/fixtures/hello":"<div>hello {{name}}</div>"};

@@ -1,0 +1,1 @@
+export default {"nested/foo":"<div>{{foo}}</div>","nested/PascalCase":"<div>{{PascalCase}}</div>"};
