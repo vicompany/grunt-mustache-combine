@@ -15,8 +15,8 @@ module.exports = function (grunt) {
       format: 'es6',
       extension: '.mustache',
       removeFromKey: '',
-      formatKey: null,
-      useLowerCaseKey: true
+      useLowerCaseKey: true,
+      formatKey: null
     });
 
     // Iterate over all specified file groups.
@@ -35,12 +35,13 @@ module.exports = function (grunt) {
 
           if (typeof options.formatKey === 'function') {
             name = options.formatKey(name);
-          } else if (options.removeFromKey) {
-            name = name.replace(options.removeFromKey, '');
-          }
-
-          if (options.useLowerCaseKey === true) {
-            name = name.toLowerCase();
+          } else {
+            if (options.removeFromKey) {
+              name = name.replace(options.removeFromKey, '');
+            }
+            if (options.useLowerCaseKey === true) {
+              name = name.toLowerCase();
+            }
           }
 
           data[name] = source;

@@ -37,7 +37,7 @@ module.exports = function (grunt) {
       defaults: {
         options: {},
         files: {
-          'tmp/defaults': ['test/fixtures/hello.mustache', 'test/fixtures/nested/foo.mustache', 'test/fixtures/nested/PascalCase.mustache']
+          'tmp/defaults.js': ['test/fixtures/hello.mustache', 'test/fixtures/nested/foo.mustache', 'test/fixtures/nested/PascalCase.mustache']
         }
       },
       es5: {
@@ -45,7 +45,7 @@ module.exports = function (grunt) {
           format: 'ES5'
         },
         files: {
-          'tmp/es5': ['test/fixtures/hello.mustache']
+          'tmp/es5.js': ['test/fixtures/hello.mustache']
         }
       },
       amd: {
@@ -53,7 +53,7 @@ module.exports = function (grunt) {
           format: 'AMD'
         },
         files: {
-          'tmp/amd': ['test/fixtures/hello.mustache']
+          'tmp/amd.js': ['test/fixtures/hello.mustache']
         }
       },
       commonjs: {
@@ -61,18 +61,30 @@ module.exports = function (grunt) {
           format: 'commonjs'
         },
         files: {
-          'tmp/commonjs': ['test/fixtures/hello.mustache']
+          'tmp/common.js': ['test/fixtures/hello.mustache']
         }
       },
-      // custom: {
-      //   options: {
-      //     separator: ': ',
-      //     punctuation: ' !!!'
-      //   },
-      //   files: {
-      //     'tmp/custom': ['test/fixtures/hello.mustache', 'test/fixtures/nested/foo.mustache', 'test/fixtures/nested/PascalCase.mustache']
-      //   }
-      // }
+      casing: {
+        options: {
+          useLowerCaseKey: false,
+          removeFromKey: 'test/fixtures/'
+        },
+        files: {
+          'tmp/casing.js': ['test/fixtures/nested/foo.mustache', 'test/fixtures/nested/PascalCase.mustache']
+        }
+      },
+      formatKey: {
+        options: {
+          formatKey: function (name) {
+            return name
+              .replace('test/fixtures/nested', '_prefix')
+              .toUpperCase();
+          }
+        },
+        files: {
+          'tmp/formatKey.js': ['test/fixtures/nested/foo.mustache', 'test/fixtures/nested/PascalCase.mustache']
+        }
+      }
     },
 
     // Unit tests.
