@@ -75,7 +75,7 @@ module.exports = function (grunt) {
       },
       formatKey: {
         options: {
-          formatKey: function (name) {
+          formatKey: function(name) {
             return name
               .replace('test/fixtures/nested', '_prefix')
               .toUpperCase();
