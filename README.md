@@ -78,7 +78,7 @@ Function to generate a custom key. It receives the file path as a parameter and 
 
 ```js
 grunt.initConfig({
-	mustache_combine: {
+  mustache_combine: {
     options: {
       formatKey: function(filepath) {
         return filepath
