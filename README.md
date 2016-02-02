@@ -15,11 +15,8 @@ require('load-grunt-tasks')(grunt); // npm install --save-dev load-grunt-tasks
 
 grunt.initConfig({
 	mustache_combine: {
-    options: {
-      // Task-specific options go here.
-    },
-    your_target: {
-      // Target-specific file lists and/or options go here.
+    all: {
+      files: 'js/templates.js': ['templates/**/*.mustache']
     }
   }
 });
@@ -33,12 +30,16 @@ grunt.registerTask('default', ['mustach_combine']);
 
 ```js
 grunt.initConfig({
-  mustache_combine: {
+	mustache_combine: {
     options: {
-      // Task-specific options go here.
+      format: 'amd',
+      extension: '.html',
+      removeFromKey: 'path/to/'
+      // useLowerCaseKey: true,
+      // formatKey: null
     },
-    your_target: {
-      // Target-specific file lists and/or options go here.
+    all: {
+      files: 'js/templates.js': ['path/to/templates/**/*.mustache']
     }
   }
 });
