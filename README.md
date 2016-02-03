@@ -1,4 +1,4 @@
-# grunt-mustache-combine
+# grunt-mustache-combine [![Build Status](https://travis-ci.org/vicompany/grunt-mustache-combine.svg?branch=master)](https://travis-ci.org/vicompany/grunt-mustache-combine)
 
 > Combine Mustache templates into one file.
 
