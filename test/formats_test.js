@@ -1,25 +1,40 @@
 'use strict';
 
 var grunt = require('grunt');
+var requirejs = require('requirejs');
+
+requirejs.config({
+  baseUrl: __dirname
+});
 
 exports.formats = {
-  es5: function(test) {
+  es5: function (test) {
     var actual = grunt.file.read('tmp/es5.js');
     var expected = grunt.file.read('test/expected/es5.js');
 
     test.equal(actual, expected, 'should output an ES5 IIFE file');
     test.done();
   },
-  amd: function(test) {
-    var actual = grunt.file.read('tmp/amd.js');
-    var expected = grunt.file.read('test/expected/amd.js');
+  amd: function (test) {
+    var key = 'test/fixtures/hello';
 
-    test.equal(actual, expected, 'should output an AMD file');
-    test.done();
+    test.expect(1);
+
+    requirejs(['../tmp/amd', './expected/amd'], function (actual, expected) {
+      actual = actual[key];
+      expected = expected[key];
+
+      test.equal(actual, expected, 'should output an AMD file');
+      test.done();
+    });
   },
-  commonjs: function(test) {
-    var actual = grunt.file.read('tmp/common.js');
-    var expected = grunt.file.read('test/expected/common.js');
+  commonjs: function (test) {
+    var key = 'test/fixtures/hello';
+    var actual = require('../tmp/common');
+    var expected = require('./expected/common');
+
+    actual = actual[key];
+    expected = expected[key];
 
     test.equal(actual, expected, 'should output an Commonjs file');
     test.done();
