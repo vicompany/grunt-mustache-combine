@@ -1,5 +1,9 @@
 npm-debug.log
 tmp
+test
+.editorconfig
 .gitattributes
 .gitignore
 .jshintrc
+.npmignore
+.travis.yml
