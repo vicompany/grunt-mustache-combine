@@ -52,7 +52,7 @@ grunt.initConfig({
 ### options.format
 Type: `String`  
 Default: `'es6'`  
-Other possible values: `'commonjs', 'amd', es5`
+Other possible values: `'commonjs', 'amd', 'es5'`
 
 The format to output.
 
@@ -66,7 +66,7 @@ The extension to remove from the key.
 Type: `String`  
 Default: `''`
 
-Paat of the file path to remove from the key.
+Part of the file path to remove from the key.
 
 ### options.useLowerCaseKey
 Type: `Boolean`  
