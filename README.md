@@ -4,18 +4,7 @@
 
 ## Getting Started
 
-This plugin will combine all your Mustache templates into one file and use the path of the file as input for the key. It won't pre-parse the file, because Mustache will [do that on the first render](https://github.com/janl/mustache.js#pre-parsing-and-caching-templates).
-
-```js
-// Contents of your generated template.js
-export default {"my/template": "<h1>hello {{name}}</h1>"};
-
-// In your module.js
-import Mustache from 'mustache';
-import templates from './templates';
-
-Mustache.render(templates['my/template'], { name: 'World'});
-```
+This plugin will combine all your Mustache templates into one file (`object`) and use the path of the file as the key. It won't pre-parse the file, because Mustache will [do that on the first render](https://github.com/janl/mustache.js#pre-parsing-and-caching-templates).
 
 ## Install
 
@@ -63,7 +52,7 @@ grunt.initConfig({
 ### options.format
 Type: `String`  
 Default: `'es6'`  
-Possible values: `'commonjs', 'amd', es5`
+Other possible values: `'commonjs', 'amd', es5`
 
 The format to output.
 
@@ -77,7 +66,7 @@ The extension to remove from the key.
 Type: `String`  
 Default: `''`
 
-Paart of the path to remove from the key.
+Paat of the file path to remove from the key.
 
 ### options.useLowerCaseKey
 Type: `Boolean`  
@@ -89,7 +78,7 @@ Generate lower case keys. Set to `false` to ignore casing.
 Type: `Function`  
 Default: `null`
 
-Function to generate a custom key. It receives the file path as a parameter and overrules the `removeFromKey` and `useLowerCaseKey` options.
+Function to generate a custom key. It overrules the `removeFromKey` and `useLowerCaseKey` options and receives the file path as a parameter.
 
 ```js
 grunt.initConfig({
@@ -97,7 +86,7 @@ grunt.initConfig({
     options: {
       formatKey: function(filepath) {
         return filepath
-          .replace('templates/sub/', 'tpl-')
+          .replace('path/to/templates/', 'tpl-')
           .toUpperCase();
       }
     },
@@ -106,6 +95,21 @@ grunt.initConfig({
     }
   }
 });
+```
+
+## Output example and usage
+
+```js
+// Contents of the generated templates file (default ES6 format)
+export default {"my/template": "<h1>hello {{name}}</h1>"};
+
+// In your module.js
+import Mustache from 'mustache';
+import templates from './templates';
+
+const tpl = templates['my/template'];
+
+Mustache.render(tpl, {name: 'World'});
 ```
 
 ## License
