@@ -41,7 +41,9 @@ grunt.initConfig({
       removeFromKey: 'path/to/'
     },
     all: {
-      files: 'dist/templates.js': ['path/to/templates/**/*.html']
+      files: {
+          'dist/templates.js': ['path/to/templates/**/*.html']
+      }
     }
   }
 });
@@ -50,32 +52,32 @@ grunt.initConfig({
 ## Options
 
 ### options.format
-Type: `String`  
-Default: `'es6'`  
+Type: `String`
+Default: `'es6'`
 Other possible values: `'commonjs', 'amd', 'es5'`
 
 The format to output.
 
 ### options.extension
-Type: `String`  
+Type: `String`
 Default: `'.mustache'`
 
 The extension to remove from the key.
 
 ### options.removeFromKey
-Type: `String`  
+Type: `String`
 Default: `''`
 
 Part of the file path to remove from the key.
 
 ### options.useLowerCaseKey
-Type: `Boolean`  
+Type: `Boolean`
 Default: `true`
 
 Generate lower case keys. Set to `false` to ignore casing.
 
 ### options.formatKey
-Type: `Function`  
+Type: `Function`
 Default: `null`
 
 Function to generate a custom key. It overrules the `removeFromKey` and `useLowerCaseKey` options and receives the file path as a parameter.
