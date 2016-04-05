@@ -20,7 +20,9 @@ require('load-grunt-tasks')(grunt); // npm install --save-dev load-grunt-tasks
 grunt.initConfig({
   mustache_combine: {
     all: {
-      files: 'js/templates.js': ['templates/**/*.mustache']
+      files: {
+        'js/templates.js': ['templates/**/*.mustache']
+      }
     }
   }
 });
